@@ -14,8 +14,8 @@ setup(
         "openpyxl>=3.1.0"
     ],
     python_requires=">=3.8",
-    author="Your Name",
-    author_email="you@example.com",
+    author="Jaspel Bosales",
+    author_email="bjaspel63@gmail.com",
     description="Python Learning Analytics Toolkit for Teachers and Schools",
     long_description=long_description,
     long_description_content_type="text/markdown",
