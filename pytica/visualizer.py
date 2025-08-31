@@ -20,7 +20,7 @@ class Visualizer:
     # ----------------------------
     # Plot individual student progress
     # ----------------------------
-    def plot_student_progress(self, student_name):
+    def plot_student_progress(self, student_name, save_path=None):
         row = self.data[self.data["Name"] == student_name]
         if row.empty:
             print(f"{student_name} not found")
@@ -38,12 +38,16 @@ class Visualizer:
         plt.ylim(0, 100)
         plt.grid(True)
         plt.tight_layout()
+
+        if save_path:
+            plt.savefig(save_path, format=save_path.split('.')[-1])
+            print(f"Saved {student_name}'s progress to {save_path}")
         plt.show()
 
     # ----------------------------
     # Plot class average
     # ----------------------------
-    def plot_class_average(self):
+    def plot_class_average(self, save_path=None):
         if self.data.shape[1] <= 1:
             print("No grade data available")
             return
@@ -57,12 +61,16 @@ class Visualizer:
         plt.ylim(0, 100)
         plt.grid(True)
         plt.tight_layout()
+
+        if save_path:
+            plt.savefig(save_path, format=save_path.split('.')[-1])
+            print(f"Saved class average to {save_path}")
         plt.show()
 
     # ----------------------------
     # Optional: Plot attendance
     # ----------------------------
-    def plot_attendance(self, student_name):
+    def plot_attendance(self, student_name, save_path=None):
         if not self.attendance:
             print("Attendance data not provided")
             return
@@ -81,4 +89,8 @@ class Visualizer:
         plt.ylim(0, 1.2)
         plt.grid(axis='y')
         plt.tight_layout()
+
+        if save_path:
+            plt.savefig(save_path, format=save_path.split('.')[-1])
+            print(f"Saved {student_name}'s attendance to {save_path}")
         plt.show()
